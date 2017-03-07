@@ -1,19 +1,39 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const imageSchema = new mongoose.Schema({
+  filename: { type: String },
+  caption: { type: String }
+});
+
+imageSchema.virtual('src')
+  .get(function getImageSRC(){
+    if(!this.filename) return null;
+    return `https://s3-eu-west-1.amazonaws.com/mickyginger/${this.filename}`;
+  });
+
 const userSchema = new mongoose.Schema({
   username: { type: String },
   email: { type: String },
-  password: { type: String, require: true }
+  password: { type: String },
+  profileImage: { type: String },
+  images: [ imageSchema ],
+  githubId: { type: String }
 });
+
+userSchema.virtual('profileImageSRC')
+  .get(function getProfileImageSRC(){
+    if(!this.profileImage) return null;
+    if(this.profileImage.match(/^http/)) return this.profileImage;
+    return `https://s3-eu-west-1.amazonaws.com/mickyginger/${this.profileImage}`;
+  });
 
 userSchema
-.virtual('passwordConfirmation')
-.set(function setPasswordConfirmation(passwordConfirmation) {
-  this._passwordConfirmation = passwordConfirmation;
-});
+  .virtual('passwordConfirmation')
+  .set(function setPasswordConfirmation(passwordConfirmation) {
+    this._passwordConfirmation = passwordConfirmation;
+  });
 
-// Lifecycle hook - mongoose middlware
 userSchema.pre('validate', function checkPassword(next) {
   if(!this.password && !this.githubId) {
     this.invalidate('password', 'required');

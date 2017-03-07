@@ -1,0 +1,36 @@
+<h1>Show</h1>
+
+<div>
+  <img src="<%= beach.image %>" alt="<%= beach.name %>">
+<ul>
+<h2><%= beach.name %></h2>
+<h3><%= beach.country %></h3>
+<h3><%= beach.seabed %></h3>
+<h3><%= beach.waves %></h3><br>
+<p><%= beach.description %></p>
+</ul>
+
+  <section>
+    <h4>Comments</h4>
+    <% beach.comments.forEach((comment) => { %>
+      <p><%= comment.content %></p>
+      <small><%= comment.createdBy.username %></small>
+      <% if(locals.isAuthenticated && comment.ownedBy(user)) { %>
+      <form method="POST" action="/beaches/<%= beach.id %>/comments/<%= comment.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <button>Delete</button>
+      </form>
+      <% } %>
+    <% }) %>
+  </section>
+
+  <% if(locals.isAuthenticated) { %>
+    <section>
+      <h4>Leave a comment</h4>
+      <form method="POST" action="/beaches/<%= beach.id %>/comments">
+        <textarea name="content" id="content" placeholder="Comment"></textarea>
+        <button class="button">Leave a comment</button>
+      </form>
+    </section>
+  <% } %>
+</div>

@@ -1,0 +1,13 @@
+<% beaches.forEach((beach) => { %>
+  <div>
+    <a href="/beaches/<%= beach.id %>">
+      <img src="<%= beach.image %>" alt="<%= beach.name %>">
+      <ul>
+      <h2><%= beach.name %></h2></a>
+      <h3><%= beach.country %></h3>
+      <h3><%= beach.seabed %></h3>
+      <h3><%= beach.waves %></h3><br>
+      <p><%= beach.description %></p>
+      </ul>
+  </div>
+<% }) %>
