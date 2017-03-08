@@ -41,8 +41,7 @@ router.route('/user/images/new')
 router.route('/user/images')
   .post(secureRoute, upload.single('filename'), users.createImage);
 
-// router.route('/user/:id/images/:imageId')
-//   .delete(secureRoute, users.deleteImage);
+
 
 router.route('/register')
 .get(registrations.new)

@@ -42,7 +42,7 @@ User
         name: 'Hanakapiai',
         country: 'Hawaii',
         seabed: 'sandy',
-        waves: 'normal, prone to strong when the wind rises',
+        waves: 'normal, prone to strong when the wind rises.',
         description: 'At this point last year alone 83 people drowned. As is the case all along the coast of Kauai, strong currents and waves make swimming very dangerous activity.',
         image: 'http://static.panoramio.com/photos/large/38520950.jpg',
         createdBy: users[0]
