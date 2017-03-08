@@ -22,4 +22,17 @@ const beachesSchema = new mongoose.Schema({
   comments: [ commentSchema ]
 });
 
+beachesSchema.methods.ownedBy = function ownedBy(user) {
+  return this.createdBy.id === user.id;
+};
+
+beachesSchema.virtual('src')
+  .get(function getImageSRC(){
+    if(!this.image) return null;
+    if(this.image.match(/^http/)) return this.image;
+    return `/uploads/${this.image}`;
+  });
+
+
+
 module.exports = mongoose.model('Beach', beachesSchema);

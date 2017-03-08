@@ -13,7 +13,7 @@ router.get('/', (req, res) => res.render('statics/index'));
 
 router.route('/beaches')
  .get(beachesController.index)
- .post(secureRoute, beachesController.create);
+ .post(secureRoute, upload.single('image'), beachesController.create);
 
 router.route('/beaches/new')
  .get(secureRoute, beachesController.new);
@@ -40,6 +40,9 @@ router.route('/user/images/new')
 
 router.route('/user/images')
   .post(secureRoute, upload.single('filename'), users.createImage);
+
+// router.route('/user/:id/images/:imageId')
+//   .delete(secureRoute, users.deleteImage);
 
 router.route('/register')
 .get(registrations.new)

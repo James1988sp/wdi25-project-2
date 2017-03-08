@@ -24,6 +24,8 @@ function createImageRoute(req, res, next) {
     });
 }
 
+
+
 module.exports = {
   show: showRoute,
   newImage: newImageRoute,

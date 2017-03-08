@@ -1,9 +1,14 @@
 <h1>New</h1>
 
-<form method="POST" action="/beaches">
+<form method="POST" action="/beaches" enctype="multipart/form-data">
   <div>
     <label for="name">Name</label>
     <input type="text" name="name" id="name">
+  </div>
+
+  <div>
+    <label for="image">Image</label>
+    <input type="file" name="image" id="image">
   </div>
 
   <div>

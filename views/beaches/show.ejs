@@ -3,12 +3,19 @@
 <div>
   <img src="<%= beach.image %>" alt="<%= beach.name %>">
 <ul>
-<h2><%= beach.name %></h2>
-<h3><%= beach.country %></h3>
-<h3><%= beach.seabed %></h3>
-<h3><%= beach.waves %></h3><br>
-<p><%= beach.description %></p>
+<h2>Name: <%= beach.name %></h2>
+<h3>Country: <%= beach.country %></h3>
+<h3>Seabed: <%= beach.seabed %></h3>
+<h3>Waves: <%= beach.waves %></h3><br>
+<p>Description: <%= beach.description %></p>
 </ul>
+<% if(locals.isAuthenticated && beach.ownedBy(user)) { %>
+  <a href="/beaches/<%= beach.id %>/edit" class="button">Edit Beach</a>
+  <form action="/beaches/<%= beach.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE"/>
+    <button class="button">Delete Beach</button>
+  </form>
+<% } %>
 
   <section>
     <h4>Comments</h4>

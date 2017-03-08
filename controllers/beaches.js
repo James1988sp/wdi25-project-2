@@ -16,6 +16,7 @@ function newRoute(req, res) {
 function createRoute(req, res, next) {
 
   req.body.createdBy = req.user;
+  if(req.file) req.body.image = req.file.filename;
 
   Beach
     .create(req.body)
@@ -113,6 +114,8 @@ function deleteCommentRoute(req, res, next) {
     .catch(next);
 }
 
+
+
 module.exports = {
   index: indexRoute,
   new: newRoute,
@@ -123,4 +126,5 @@ module.exports = {
   delete: deleteRoute,
   createComment: createCommentRoute,
   deleteComment: deleteCommentRoute
+
 };

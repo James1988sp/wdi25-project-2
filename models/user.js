@@ -11,6 +11,7 @@ imageSchema.virtual('src')
     if(!this.filename) return null;
     return `https://s3-eu-west-1.amazonaws.com/mickyginger/${this.filename}`;
   });
+  
 
 const userSchema = new mongoose.Schema({
   username: { type: String },
