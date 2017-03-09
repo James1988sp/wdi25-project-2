@@ -1,14 +1,20 @@
-<h1><%= user.username %></h1>
-<img src="<%= user.profileImageSRC %>" alt="<%= user.profileImageSRC %>"><br>
-<a href="/user/images/new">Add image</a><br>
-<h1><%= user.username %>'s images</h1>
-<div class="feed">
-  <% user.images.forEach((image) => { %>
-    <img src="<%= user.image %>" alt="<%= image.caption %>">
-    <p><%= image.caption %></p>
-    <form method="POST" action="/user/<%=user.id%>/images/<%=image.id%>">
-      <input type="hidden" name="_method" value="DELETE">
-      <button class="delbtn btn">Delete Image</button>
-    </form>
-  <% }) %>
-</div>
+<section class="container">
+  <h1><%= user.username %></h1>
+  <img src="<%= user.profileImageSRC %>" alt="<%= user.profileImageSRC %>"><br>
+  <a href="/user/images/new">Add image</a><br>
+  <h1><%= user.username %>'s images</h1>
+  <div class="feed">
+    <% user.images.forEach((image) => { %>
+      <img src="<%= user.image %>" alt="<%= image.caption %>">
+      <p><%= image.caption %></p>
+      <form method="POST" action="/user/<%=user.id%>/images/<%=image.id%>">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="delbtn btn">Delete Image</button>
+      </form>
+      <form method="POST" action="/user">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="delbtn btn">Delete Profile</button>
+      </form>
+    <% }) %>
+  </div>
+</section>

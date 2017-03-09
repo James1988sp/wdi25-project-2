@@ -1,15 +1,17 @@
-<% if (locals.isAuthenticated) { %>
-  <div id="map"></div>
-<% } else { %>
-  <div class="homepage-image">
-    <h1>Beautifulbeaches.com</h1>
-    <div class="home">
-      <h5><a href="/login">Log in </a>To see all the most beautiful beaches around the world &#x26F1;.</h5>
+
+  <% if (locals.isAuthenticated) { %>
+    <div id="map" data-beaches="<%= JSON.stringify(beaches) %>"></div>
+  <% } else { %>
+    <div class="homepage-image">
+      <div class="homepage-center">
+        <h1>Beautifulbeaches.com</h1>
+        <div class="home">
+          <h5><a href="/login">Log in </a>To see all the most beautiful beaches around the world &#x26F1;.</h5>
+        </div>
+      </div>
     </div>
-  </div>
 
-<% } %>
-
+  <% } %>
 <footer>
-      <p>Made with &hearts; by GA student <span>Gianmaria Carrodano</span></p>
+  <p>Made with &hearts; by GA student <span>Gianmaria Carrodano</span></p>
 </footer>

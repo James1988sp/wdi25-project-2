@@ -1,5 +1,14 @@
 const Beach = require('../models/beach');
 
+function homeRoute(req, res, next) {
+  Beach
+    .find()
+    .populate('createdBy')
+    .exec()
+    .then((beaches) => res.render('statics/index', { beaches }))
+    .catch(next);
+}
+
 function indexRoute(req, res, next) {
   Beach
     .find()
@@ -117,6 +126,8 @@ function deleteCommentRoute(req, res, next) {
 
 
 module.exports = {
+  
+  home: homeRoute,
   index: indexRoute,
   new: newRoute,
   create: createRoute,

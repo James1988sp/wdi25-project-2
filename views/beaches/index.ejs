@@ -1,13 +1,16 @@
-<% beaches.forEach((beach) => { %>
-  <div>
-    <a href="/beaches/<%= beach.id %>">
-      <img src="<%= beach.src %>" alt="<%= beach.name %>">
-      <ul>
-      Name : <h2><%= beach.name %></h2></a>
-      Country : <h3><%= beach.country %></h3>
-      Seabed : <h3><%= beach.seabed %></h3>
-      Waves : <h3><%= beach.waves %></h3><br>
-      <p><%= beach.description %></p>
-      </ul>
+<section class="container">
+  <div class="row">
+    <% beaches.forEach((beach) => { %>
+      <div class="col-md-6">
+      <div class="beach-image" style="background-image:url('<%= beach.src %>')"></div>
+        <ul>
+          <li><span>Name</span> : <a href="/beaches/<%= beach.id %>"><h2><%= beach.name %></h2></a></li>
+          <li><span>Country</span> : <h3><%= beach.country %></h3></li>
+          <li><span>Seabed</span> : <h3><%= beach.seabed %></h3></li>
+          <li><span>Waves</span> : <h3><%= beach.waves %></h3></li>
+          <li><p><%= beach.description %></p></li>
+        </ul>
+      </div>
+    <% }) %>
   </div>
-<% }) %>
+</section>

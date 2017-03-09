@@ -1,16 +1,19 @@
-<h1>Login</h1>
+<section class="container">
+  <h1>Login</h1>
 
-<form method="POST" action="/login">
-  <div>
-    <label for="email">Email</label>
-    <input type="text" name="email" id="email" required>
-  </div>
-  <div>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-  </div>
+  <form method="POST" action="/login">
+    <div>
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email" required>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required>
+    </div>
 
-  <button class="button">Login</button>
-</form>
+    <button class="button">Login</button>
+  </form>
 
-<a href="<%= oauth.github.getLoginURL() %>" target="_blank" class="btn btn-primary">Login With Github</a>
+  <a href="<%= oauth.github.getLoginURL() %>"><img src="../assets/images/github.png"></a>
+  
+</section>

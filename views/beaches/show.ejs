@@ -1,46 +1,48 @@
-<h1>Show</h1>
+<section class="container">
+  <h1>Show</h1>
 
-<div>
-  <img src="<%= beach.src %>" alt="<%= beach.name %>">
-<ul>
-<h2>Name: <%= beach.name %></h2>
-<h3>Country: <%= beach.country %></h3>
-<h3>Seabed: <%= beach.seabed %></h3>
-<h3>Waves: <%= beach.waves %></h3><br>
-<p>Description: <%= beach.description %></p>
-</ul>
+  <div>
+    <img src="<%= beach.src %>" alt="<%= beach.name %>">
+  <ul>
+  <h2><span>Name</span>: <%= beach.name %></h2>
+  <h3><span>Country</span>: <%= beach.country %></h3>
+  <h3><span>Seabed</span>: <%= beach.seabed %></h3>
+  <h3><span>Waves</span>: <%= beach.waves %></h3><br>
+  <p><span>Description</span>: <%= beach.description %></p>
+  </ul>
 
 
-  <form action="/beaches/<%= beach.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE"/>
-    <button class="button">Delete Beach</button>
-  </form>
+    <form action="/beaches/<%= beach.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE"/>
+      <button class="button">Delete Beach</button>
+    </form>
 
-  <section id="weatherInfo" data-q="<%= beach.name %>">
-    <h2>Current Weather Conditions</h2>
-  </section>
+    <div class="section" id="weatherInfo" data-q="<%= beach.name %>">
+      <h2>Current Weather Conditions</h2>
+    </div>
 
-  <section>
-    <h4>Comments</h4>
-    <% beach.comments.forEach((comment) => { %>
-      <p><%= comment.content %></p>
-      <small><%= comment.createdBy.username %></small>
-      <% if(locals.isAuthenticated && comment.ownedBy(user)) { %>
-      <form method="POST" action="/beaches/<%= beach.id %>/comments/<%= comment.id %>">
-        <input type="hidden" name="_method" value="DELETE">
-        <button>Delete</button>
-      </form>
-      <% } %>
-    <% }) %>
-  </section>
+    <div class="section">
+      <h4>Comments</h4>
+      <% beach.comments.forEach((comment) => { %>
+        <p><%= comment.content %></p>
+        <small><%= comment.createdBy.username %></small>
+        <% if(locals.isAuthenticated && comment.ownedBy(user)) { %>
+        <form method="POST" action="/beaches/<%= beach.id %>/comments/<%= comment.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button>Delete</button>
+        </form>
+        <% } %>
+      <% }) %>
+    </div>
 
-  <% if(locals.isAuthenticated) { %>
-    <section>
-      <h4>Leave a comment</h4>
-      <form method="POST" action="/beaches/<%= beach.id %>/comments">
-        <textarea name="content" id="content" placeholder="Comment"></textarea>
-        <button class="button">Leave a comment</button>
-      </form>
-    </section>
-  <% } %>
-</div>
+    <% if(locals.isAuthenticated) { %>
+      <div class="section">
+        <h4>Leave a comment</h4>
+        <form method="POST" action="/beaches/<%= beach.id %>/comments">
+          <textarea name="content" id="content" placeholder="Comment"></textarea>
+          <button class="button">Leave a comment</button>
+        </form>
+      </div>
+    <% } %>
+  </div>
+</section>

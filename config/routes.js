@@ -9,7 +9,8 @@ const oauth = require('../controllers/oauth');
 const upload = require('../lib/upload');
 
 
-router.get('/', (req, res) => res.render('statics/index'));
+router.route('/')
+ .get(beachesController.home);
 
 router.route('/beaches')
  .get(beachesController.index)
@@ -33,7 +34,8 @@ router.route('/beaches/:id/comments/:commentId')
  .delete(secureRoute, beachesController.deleteComment);
 
 router.route('/user')
-  .get(secureRoute, users.show);
+  .get(secureRoute, users.show)
+  .delete(secureRoute, registrations.delete);
 
 router.route('/user/images/new')
   .get(secureRoute, users.newImage);
@@ -41,22 +43,19 @@ router.route('/user/images/new')
 router.route('/user/images')
   .post(secureRoute, upload.single('filename'), users.createImage);
 
-
-
 router.route('/register')
-.get(registrations.new)
-.post(registrations.create);
+ .get(registrations.new)
+ .post(registrations.create);
 
 router.route('/login')
-.get(sessionsController.new)
-.post(sessions.create);
+ .get(sessionsController.new)
+ .post(sessions.create);
 
 router.route('/logout')
  .get(sessionsController.delete);
 
 router.route('/oauth/github')
  .get(oauth.github);
-
 
 router.all('*', (req, res) => res.notFound());
 
