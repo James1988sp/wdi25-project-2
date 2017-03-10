@@ -6,7 +6,6 @@ $(function () {
   var infowindow = null;
   var $map = $('#map');
   var beachData = $('#map').data('beaches');
-  var location = null;
 
   if ($map.length) getBeachLocation();
 

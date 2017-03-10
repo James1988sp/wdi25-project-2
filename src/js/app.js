@@ -4,7 +4,7 @@ $(() => {
   let infowindow = null;
   const $map = $('#map');
   const beachData = $('#map').data('beaches');
-  let location = null;
+
 
   if ($map.length) getBeachLocation();
 
