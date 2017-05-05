@@ -25,6 +25,7 @@ MongoDB
 JSON
 Gulp
 NodeJS
+Heroku
 
 # Challenges : 
 Consuming the Weather API took some time to mine for the correct data. Grab the correct data to display and create the beach view on the map.
