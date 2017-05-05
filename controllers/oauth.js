@@ -1,18 +1,18 @@
-const rp = require('request-promise');
-const config = require('../config/oauth');
-const User = require('../models/user');
+   const rp = require('request-promise');
+   const config = require('../config/oauth');
+   const User = require('../models/user');
 
-function github(req, res, next) {
-  return rp({
-    method: 'POST',
-    url: config.github.accessTokenURL,
-    qs: {
-      client_id: config.github.clientId,
-      client_secret: config.github.clientSecret,
-      code: req.query.code
-    },
-    json: true
-  })
+   function github(req, res, next) {
+     return rp({
+       method: 'POST',
+       url: config.github.accessTokenURL,
+       qs: {
+         client_id: config.github.clientId,
+         client_secret: config.github.clientSecret,
+         code: req.query.code
+       },
+       json: true
+     })
   .then((token) => {
     return rp({
       method: 'GET',
@@ -48,6 +48,6 @@ function github(req, res, next) {
     res.redirect('/');
   })
   .catch(next);
-}
+   }
 
-module.exports = { github };
+   module.exports = { github };
