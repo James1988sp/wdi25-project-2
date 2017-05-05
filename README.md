@@ -17,7 +17,7 @@ In addition, the User is able to create a new beach, uploading images about it, 
 Both the Google Maps API and the Weather API were consumed in the project.
 Github Login.
 
-# TECHNOLOGIES :
+# Technologies :
 
 Bootstrap SCSS
 Javascript
@@ -26,7 +26,7 @@ JSON
 Gulp
 NodeJS
 
-# CHALLENGES : 
+# Challenges : 
 Consuming the Weather API took some time to mine for the correct data. Grab the correct data to display and create the beach view on the map.
 
 # Extra features to include
